@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: production-cicd-app
+  namespace: production
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: production-cicd-app
+
+  template:
+    metadata:
+      labels:
+        app: production-cicd-app
+
+    spec:
+      containers:
+        - name: production-cicd-app
+          image: swaroopp03/production-cicd-app:v1
+          ports:
+            - containerPort: 3000
